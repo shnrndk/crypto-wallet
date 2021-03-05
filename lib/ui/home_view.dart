@@ -50,8 +50,8 @@ class _HomeViewState extends State<HomeView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          //Navigator.push(
-          //    context, MaterialPageRoute(builder: (context) => AddView()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddView()));
         },
         child: Icon(Icons.add, color: Colors.white),
       ),
