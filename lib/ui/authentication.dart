@@ -60,7 +60,14 @@ class _AuthenticationState extends State<Authentication> {
               width: MediaQuery.of(context).size.width / 1.4,
               height: 45,
               child: MaterialButton(
-                onPressed: () {},
+                onPressed: () async {
+                  bool shouldNavigate =
+                      await signIn(_emailField.text, _passwordField.text);
+                  if (shouldNavigate) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomeView()));
+                  }
+                },
                 child: Text('Login'),
               ),
               decoration: BoxDecoration(
