@@ -1,3 +1,4 @@
+import 'package:crypt_wallet/net/flutterfile.dart';
 import 'package:flutter/material.dart';
 
 class AddView extends StatefulWidget {
@@ -8,7 +9,7 @@ class AddView extends StatefulWidget {
 }
 
 class _AddViewState extends State<AddView> {
-  String dropdownValue = 'Bitcoin';
+  String dropdownValue = 'bitcoin';
 
   TextEditingController _coinAmount = new TextEditingController();
 
@@ -19,7 +20,7 @@ class _AddViewState extends State<AddView> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DropdownButton(
-            items: <String>['Bitcoin', 'Tether', 'Ethereum']
+            items: <String>['bitcoin', 'tether', 'ethereum']
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -49,7 +50,8 @@ class _AddViewState extends State<AddView> {
                   borderRadius: BorderRadius.circular(15.0),
                   color: Colors.lightBlueAccent),
               child: MaterialButton(
-                onPressed: () {
+                onPressed: () async {
+                  await addCoin(dropdownValue, _coinAmount.text);
                   Navigator.of(context).pop();
                 },
                 child: Text(
