@@ -31,8 +31,6 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     getValue(String id, double amount) {
       if (id == 'bitcoin') {
-        print('Hello world');
-        print(bitcoin * amount);
         return bitcoin * amount;
       } else if (id == 'ethereum') {
         return ethereum * amount;
@@ -62,14 +60,28 @@ class _HomeViewState extends State<HomeView> {
                 }
                 return new ListView(
                   children: snapshot.data.docs.map((DocumentSnapshot document) {
-                    return Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text('Coin Name:${document.id}'),
-                          Text(
-                              'Amount Owned: \$${getValue(document.id, document.data()['Amount']).toStringAsFixed(2)}')
-                        ],
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.blueAccent,
+                            borderRadius: BorderRadius.circular(20)),
+                        height: 70,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              'Coin: ${document.id}',
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white),
+                            ),
+                            Text(
+                              '\$${getValue(document.id, document.data()['Amount']).toStringAsFixed(2)}',
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white),
+                            )
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),
