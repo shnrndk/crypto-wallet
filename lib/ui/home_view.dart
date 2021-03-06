@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crypt_wallet/net/apimethods.dart';
+import 'package:crypt_wallet/net/flutterfile.dart';
 import 'package:crypt_wallet/ui/add_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -86,8 +87,8 @@ class _HomeViewState extends State<HomeView> {
                                   color: Colors.red,
                                   size: 30,
                                 ),
-                                onPressed: () {
-                                  print("Test");
+                                onPressed: () async {
+                                  await removeCoin(document.id);
                                 })
                           ],
                         ),
