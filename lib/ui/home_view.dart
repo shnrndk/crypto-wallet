@@ -79,7 +79,16 @@ class _HomeViewState extends State<HomeView> {
                               '\$${getValue(document.id, document.data()['Amount']).toStringAsFixed(2)}',
                               style:
                                   TextStyle(fontSize: 18, color: Colors.white),
-                            )
+                            ),
+                            IconButton(
+                                icon: Icon(
+                                  Icons.close,
+                                  color: Colors.red,
+                                  size: 30,
+                                ),
+                                onPressed: () {
+                                  print("Test");
+                                })
                           ],
                         ),
                       ),
